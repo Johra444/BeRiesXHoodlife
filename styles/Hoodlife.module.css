@@ -8,6 +8,12 @@
   font-weight: 500;
   padding-top: 5px;
 }
+.bluetext{
+  font-size: 24px;
+  color: #0000ff;
+  font-weight: 600;
+  align-items: flex-start;
+}
 .burnContainer {
   width: 100%;
   display: flex;

@@ -6,8 +6,7 @@ import PropTypes from "prop-types";
 const NavigationLinks = (props) => {
   return (
     <>
-      <nav className={`navigation-links-nav ${props.rootClassName} `}>
-      <Link href="/hoodlife"><span className="navigation-links-text">Hoodlife</span></Link>
+      <nav className={`navigation-links-nav ${props.rootClassName} `}>   
         <div
           data-thq="thq-dropdown"
           className="navigation-links-thq-dropdown list-item"
@@ -16,7 +15,7 @@ const NavigationLinks = (props) => {
             data-thq="thq-dropdown-toggle"
             className="navigation-links-dropdown-toggle"
           >
-            <span className="navigation-links-text">Mint</span>
+            <span className="navigation-links-text">Comming Soon</span>
             <div
               data-thq="thq-dropdown-arrow"
               className="navigation-links-dropdown-arrow"
@@ -92,11 +91,8 @@ const NavigationLinks = (props) => {
             </li>
           </ul>
         </div>
-        <Link href="/burn">
-          <a className="navigation-links-link1 nav-link">{props.Burn}</a>
-        </Link>
-        <Link href="/key-owner">
-          <a className="navigation-links-link2 nav-link">{props.text2}</a>
+        <Link href="/">
+          <a className="navigation-links-link1 nav-link">Hoodlife</a>
         </Link>
       </nav>
       <style jsx>
@@ -158,6 +154,7 @@ const NavigationLinks = (props) => {
             list-style-position: inside;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
+            text-align: center;
           }
           .navigation-links-dropdown {
             cursor: pointer;
