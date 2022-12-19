@@ -94,7 +94,7 @@ const Home = () => {
         HLC_CONTRACT_ABI,
         signer
       );
-      const value = 0.0003 * amount;
+      const value = 0.04 * amount;
       const Mint = await contract.Mint(amount, {
         value: utils.parseEther(value.toString()),
       });

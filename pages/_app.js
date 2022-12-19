@@ -8,6 +8,7 @@ import {
   Theme,
 } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
+import { arbitrum } from 'wagmi/chains';
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
@@ -38,8 +39,7 @@ export default function MyApp({ Component: Component, pageProps: pageProps }) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider
         modalSize="compact"
-        initialChain={chain.arbitrum}
-        chains={chains}
+        chains={chains} initialChain={arbitrum}
         theme={lightTheme({
           accentColor: "#0000ff",
           accentColorForeground: "white",
