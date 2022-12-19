@@ -249,7 +249,7 @@ const Home = () => {
             <section id="Title" className={styles.burnContainer1}>
               <h1 className={styles.burnText}>HoodLife Club x BeRies</h1>
               <span className={styles.paragraph}>
-                Burn your NFT to receive the BeRies pack you choose.
+               Mint to receive the BeRies X Hoodlife Club Pack.
               </span>
             </section>
             <div className={styles.whiteContainer}>
@@ -261,7 +261,7 @@ const Home = () => {
                 <p className={styles.bluetext}>1 Hoodlife Club NFT + 1 Tee</p>
                 <p className={styles.bluetext}> {minted} / 111</p>
                 <button className={styles.mintButton} onClick={handleMint}>
-                  Mint
+                  Mint for 0.04 ETH
                 </button>
                 <span className={styles.paragraph}>
                   Mint your NFT to order your HoodLife x BeRies tee
