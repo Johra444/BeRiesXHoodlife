@@ -16,13 +16,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { utils } from "ethers";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBSOlbJezcUDMMx4viwdCADFRdqJv5ynYw",
-  authDomain: "hoodlife-96c4e.firebaseapp.com",
-  projectId: "hoodlife-96c4e",
-  storageBucket: "hoodlife-96c4e.appspot.com",
-  messagingSenderId: "1055090117414",
-  appId: "1:1055090117414:web:a5fbdd65c4e84f5d66cfe7",
-  measurementId: "G-8SK20THR8H"
+  apiKey: "AIzaSyARKOGsDj7zgd_0IBvtbEsancDEX8Ie55w",
+  authDomain: "berieshoodlife.firebaseapp.com",
+  projectId: "berieshoodlife",
+  storageBucket: "berieshoodlife.appspot.com",
+  messagingSenderId: "308451013660",
+  appId: "1:308451013660:web:b9ef7a1aa43b061aff5bd9"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -182,6 +181,16 @@ const Home = () => {
         burned: burnedBalance,
       });
       console.log("Document written with ID: ", address);
+      toast.success('Information received !', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
       setSubmitButton(true);
     } catch (e) {
       console.error("Error adding document: ", e);

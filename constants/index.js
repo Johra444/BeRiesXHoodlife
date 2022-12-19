@@ -1,8 +1,14 @@
-export const HLC_CONTRACT_ADDRESS = "0xDF7048D960Bf4bc860592a5097A229CD177CB5BC";
+export const HLC_CONTRACT_ADDRESS = "0x3AC92357602Ff7A62847253A44B594A264b880b4";
 
-export const HLC_CONTRACT_ABI = [ 
+export const HLC_CONTRACT_ABI = [
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_theBaseURI",
+				"type": "string"
+			}
+		],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
 	},
@@ -157,6 +163,19 @@ export const HLC_CONTRACT_ABI = [
 			}
 		],
 		"name": "setApprovalForAll",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_newBaseURI",
+				"type": "string"
+			}
+		],
+		"name": "setBaseUri",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -331,6 +350,19 @@ export const HLC_CONTRACT_ABI = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "baseURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -401,7 +433,33 @@ export const HLC_CONTRACT_ABI = [
 	},
 	{
 		"inputs": [],
+		"name": "PACK",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "price",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "RECEIPT",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -439,19 +497,6 @@ export const HLC_CONTRACT_ABI = [
 				"internalType": "bool",
 				"name": "",
 				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "TEE",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
