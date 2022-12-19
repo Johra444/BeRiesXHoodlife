@@ -258,19 +258,18 @@ const Home = () => {
               </div>
               <div className={styles.ContainerLeft}>
                 <img className={styles.hlclogo} src="/assets/HLClogo.png" />
-                <p className={styles.bluetext}>1 Hoodie + 1 Tee</p>
+                <p className={styles.bluetext}>1 Hoolife Club NFT + 1 Tee</p>
                 <p className={styles.bluetext}> {minted} / 111</p>
                 <button className={styles.mintButton} onClick={handleMint}>
                   Mint
                 </button>
                 <span className={styles.paragraph}>
                   Mint your NFT to order your HoodLife x BeRies tee
-                  
                 </span>
                 <span className={styles.paragraph}>
-                The funds raised will be used to mint NFTs Hoodies for the
+                  The funds raised will be used to mint NFTs Hoodies for the
                   BeRies treasury.
-                  </span>
+                </span>
               </div>
             </div>
             <div className={styles.blueContainer}>
