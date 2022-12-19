@@ -14,7 +14,7 @@ import { publicProvider } from "wagmi/providers/public";
 
 
 const { chains, provider } = configureChains(
-  [chain.goerli],
+  [chain.arbitrum],
   [
     // alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider(),
@@ -38,7 +38,7 @@ export default function MyApp({ Component: Component, pageProps: pageProps }) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider
         modalSize="compact"
-        initialChain={chain.goerli}
+        initialChain={chain.arbitrum}
         chains={chains}
         theme={lightTheme({
           accentColor: "#0000ff",
