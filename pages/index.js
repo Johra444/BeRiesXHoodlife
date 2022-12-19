@@ -258,7 +258,7 @@ const Home = () => {
               </div>
               <div className={styles.ContainerLeft}>
                 <img className={styles.hlclogo} src="/assets/HLClogo.png" />
-                <p className={styles.bluetext}>1 Hoolife Club NFT + 1 Tee</p>
+                <p className={styles.bluetext}>1 Hoodlife Club NFT + 1 Tee</p>
                 <p className={styles.bluetext}> {minted} / 111</p>
                 <button className={styles.mintButton} onClick={handleMint}>
                   Mint
