@@ -15,7 +15,7 @@ const NavigationLinks = (props) => {
             data-thq="thq-dropdown-toggle"
             className="navigation-links-dropdown-toggle"
           >
-            <span className="navigation-links-text">Comming Soon</span>
+            <span className="navigation-links-text">Coming Soon</span>
             <div
               data-thq="thq-dropdown-arrow"
               className="navigation-links-dropdown-arrow"
