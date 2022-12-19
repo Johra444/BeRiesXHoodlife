@@ -11,8 +11,8 @@ import { getFirestore } from "firebase/firestore";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { HLC_CONTRACT_ABI, HLC_CONTRACT_ADDRESS } from "../constants";
 import { ethers } from "ethers";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { utils } from "ethers";
 
 const firebaseConfig = {
@@ -21,7 +21,7 @@ const firebaseConfig = {
   projectId: "berieshoodlife",
   storageBucket: "berieshoodlife.appspot.com",
   messagingSenderId: "308451013660",
-  appId: "1:308451013660:web:b9ef7a1aa43b061aff5bd9"
+  appId: "1:308451013660:web:b9ef7a1aa43b061aff5bd9",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -32,7 +32,7 @@ const Home = () => {
   const { address, isConnected } = useAccount();
   const [submitButton, setSubmitButton] = useState(true);
   const [burnedBalance, setBurnedBalance] = useState(0);
-  const [minted, setMinted] = useState('x');
+  const [minted, setMinted] = useState("x");
 
   const doubleBalance = async () => {
     try {
@@ -46,9 +46,17 @@ const Home = () => {
       const balanceOf = await contract.balanceOf(address, 0);
       const burned = await contract.burnedToken(address);
       const minted = await contract.minted();
-        setMinted(ethers.utils.formatUnits(minted, 0));
-      console.log("you have : ", ethers.utils.formatUnits(balanceOf, 0), " tokens");
-      console.log("you have burned : ", ethers.utils.formatUnits(burned, 0), " tokens");
+      setMinted(ethers.utils.formatUnits(minted, 0));
+      console.log(
+        "you have : ",
+        ethers.utils.formatUnits(balanceOf, 0),
+        " tokens"
+      );
+      console.log(
+        "you have burned : ",
+        ethers.utils.formatUnits(burned, 0),
+        " tokens"
+      );
       setUserBalance(ethers.utils.formatUnits(balanceOf, 0));
       setBurnedBalance(ethers.utils.formatUnits(burned, 0));
       firbaseData(burned);
@@ -59,7 +67,7 @@ const Home = () => {
   const firbaseData = async (burned) => {
     const docRef = doc(db, "orders", address);
     const docSnap = await getDoc(docRef);
-    
+
     try {
       var snapshot = docSnap.data().burned;
       if (snapshot != undefined) {
@@ -79,33 +87,22 @@ const Home = () => {
 
   const mintFunction = async (amount) => {
     try {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-    const contract = new ethers.Contract(
-      HLC_CONTRACT_ADDRESS,
-      HLC_CONTRACT_ABI,
-      signer
+      const contract = new ethers.Contract(
+        HLC_CONTRACT_ADDRESS,
+        HLC_CONTRACT_ABI,
+        signer
       );
       const value = 0.0003 * amount;
       const Mint = await contract.Mint(amount, {
         value: utils.parseEther(value.toString()),
       });
       await Mint.wait();
-        console.log("Minted");
-        doubleBalance();
+      console.log("Minted");
+      doubleBalance();
       //  getMinted();
-        toast.success('Minted !', {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          });
-    } catch (error) {
-      toast.error('Something went wrong', {
+      toast.success("Minted !", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -114,10 +111,21 @@ const Home = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });
-        console.log(error);
+      });
+    } catch (error) {
+      toast.error("Something went wrong", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      console.log(error);
     }
-}
+  };
 
   const burn = async () => {
     try {
@@ -130,12 +138,12 @@ const Home = () => {
       );
       console.log("Your current balance is  : ", userBalance);
       console.log("You've already burned : ", burnedBalance, " tokens");
-      if (userBalance == 0) { 
+      if (userBalance == 0) {
         throw new Error("You don't have any tokens to burn");
       }
       const Burn = await contract.burn();
       await Burn.wait();
-      toast.success('Burned !', {
+      toast.success("Burned !", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -144,11 +152,11 @@ const Home = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });
+      });
       doubleBalance();
     } catch (error) {
       console.log(error);
-      toast.error('Something went wrong', {
+      toast.error("Something went wrong", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -157,7 +165,7 @@ const Home = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });
+      });
     }
   };
 
@@ -181,7 +189,7 @@ const Home = () => {
         burned: burnedBalance,
       });
       console.log("Document written with ID: ", address);
-      toast.success('Information received !', {
+      toast.success("Information received !", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -190,7 +198,7 @@ const Home = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });
+      });
       setSubmitButton(true);
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -234,32 +242,37 @@ const Home = () => {
         <Head>
           <title>Burn - BeRies</title>
           <meta property="og:title" content="Burn - BeRies" />
-        </Head>       
+        </Head>
 
         {isConnected ? (
           <div className={styles.div}>
-        <section id="Title" className={styles.burnContainer1}>
-          <h1 className={styles.burnText}>HoodLife Club x BeRies</h1>
-          <span className={styles.paragraph}>
-            Burn your NFT to receive the BeRies pack you choose.
-          </span>
-        </section>
-        <div className={styles.whiteContainer}>
-          <div className={styles.ContainerRight}>
-              <img className={styles.tee} src="/assets/tee.png"  />  
-          </div>
-          <div className={styles.ContainerLeft}>
-              <img className={styles.hlclogo} src="/assets/HLClogo.png"  />
-              <p className={styles.bluetext}>1 Hoodies + 1 Tee</p>
-              <p className={styles.bluetext}> {minted} / 111</p>
+            <section id="Title" className={styles.burnContainer1}>
+              <h1 className={styles.burnText}>HoodLife Club x BeRies</h1>
+              <span className={styles.paragraph}>
+                Burn your NFT to receive the BeRies pack you choose.
+              </span>
+            </section>
+            <div className={styles.whiteContainer}>
+              <div className={styles.ContainerRight}>
+                <img className={styles.tee} src="/assets/tee.png" />
+              </div>
+              <div className={styles.ContainerLeft}>
+                <img className={styles.hlclogo} src="/assets/HLClogo.png" />
+                <p className={styles.bluetext}>1 Hoodie + 1 Tee</p>
+                <p className={styles.bluetext}> {minted} / 111</p>
                 <button className={styles.mintButton} onClick={handleMint}>
                   Mint
                 </button>
                 <span className={styles.paragraph}>
-                Mint your NFT to order your HoodLife x BeRies tee
-          </span>
-          </div>
-        </div>
+                  Mint your NFT to order your HoodLife x BeRies tee
+                  
+                </span>
+                <span className={styles.paragraph}>
+                The funds raised will be used to mint NFTs Hoodies for the
+                  BeRies treasury.
+                  </span>
+              </div>
+            </div>
             <div className={styles.blueContainer}>
               <div className={styles.ContainerRight}>
                 <h1>Burn your NFTs to access form</h1>
@@ -267,10 +280,12 @@ const Home = () => {
                   Burn
                 </button>
                 <p>If you already did, form is down below</p>
-                
               </div>
               <div className={styles.ContainerLeftImg}>
-                <img className={styles.hlcCharacter} src="/assets/beries2.png"  />
+                <img
+                  className={styles.hlcCharacter}
+                  src="/assets/beries2.png"
+                />
               </div>
             </div>
             <form
@@ -404,7 +419,7 @@ const Home = () => {
                     <h1 className={styles.inputTitle}>Size (S to XL)</h1>
                     <input
                       placeholder="M"
-                      required 
+                      required
                       className={styles.input}
                       value={state.info}
                       onChange={(e) =>
@@ -430,16 +445,13 @@ const Home = () => {
             </form>
           </div>
         ) : (
-      <div className={styles.container}>
-        <img
-          src="/assets/plug.webp"
-          className={styles.plug}
-        />
-        <div className={styles.connectContainer}>
-          <span className={styles.text1}>Connect your wallet</span>
-          <span className={styles.text2}>If you want go on this page.</span>
-        </div>
-      </div>
+          <div className={styles.container}>
+            <img src="/assets/plug.webp" className={styles.plug} />
+            <div className={styles.connectContainer}>
+              <span className={styles.text1}>Connect your wallet</span>
+              <span className={styles.text2}>If you want go on this page.</span>
+            </div>
+          </div>
         )}
         <Footer rootClassName="footer-root-class-name4"></Footer>
         <ToastContainer
@@ -454,7 +466,7 @@ const Home = () => {
           pauseOnHover
           theme="colored"
           limit={1}
-          />
+        />
       </div>
     </>
   );
