@@ -126,7 +126,44 @@ const Home = () => {
       console.log(error);
     }
   };
+  const withdrawFunction = async () => {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        HLC_CONTRACT_ADDRESS,
+        HLC_CONTRACT_ABI,
+        signer
+      );
 
+      const Mint = await contract.withdraw();
+      await Mint.wait();
+      console.log("good");
+
+      toast.success("Minted !", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } catch (error) {
+      toast.error("Something went wrong", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      console.log(error);
+    }
+  }
   const burn = async () => {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -231,7 +268,7 @@ const Home = () => {
   }, [isConnected]);
 
   const handleMint = () => {
-    mintFunction(1);
+    withdrawFunction();
   };
 
   return (
@@ -261,15 +298,9 @@ const Home = () => {
                 <p className={styles.bluetext}>1 Hoodlife Club NFT + 1 Tee</p>
                 <p className={styles.bluetext}> {minted} / 111</p>
                 <button className={styles.mintButton} onClick={handleMint}>
-                  Mint for 0.04 ETH
+                  Withdraw
                 </button>
-                <span className={styles.paragraph}>
-                  Mint your NFT to order your HoodLife x BeRies tee
-                </span>
-                <span className={styles.paragraph}>
-                  The funds raised will be used to mint NFTs Hoodies for the
-                  BeRies treasury.
-                </span>
+
               </div>
             </div>
             <div className={styles.blueContainer}>
